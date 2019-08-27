@@ -14,7 +14,7 @@ This project uses the Maven Wrapper, so all you need is Java installed.
 
 ### Installation
 
-- Clone the project: `git clone https://github.com/Azure-Samples/hello-spring-function-azure.git`
+- Clone the project: `git clone https://github.com/hagaic/hello-spring-function-azure.git`
 - Build the project: `./mvnw clean package`
 
 ### Quickstart
@@ -32,3 +32,6 @@ And you can test it using a cURL command:
 Deploying the application on Azure Function with the Azure Function Maven plug-in:
 
 `./mvnw azure-functions:deploy`
+
+## Manually Testing the Azure Function
+curl http://localhost:7071/api/hello -d "{\"name\":\"Azure\"}"
