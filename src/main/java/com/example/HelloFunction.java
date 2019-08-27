@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.model.Greeting;
 import com.example.model.User;
+import com.microsoft.azure.functions.ExecutionContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,10 @@ public class HelloFunction {
     }
 
     @Bean
-    public Function<User, Greeting> hello() {
-        return user -> new Greeting("Welcome, " + user.getName());
+    public Function<User, Greeting> hello(ExecutionContext context) {
+        return user -> {
+            context.getLogger().info("Returning Greeting for user name: " + user.getName());
+            return new Greeting("Welcome, " + user.getName());
+        };
     }
 }

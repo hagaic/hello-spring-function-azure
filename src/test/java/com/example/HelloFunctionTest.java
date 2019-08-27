@@ -11,7 +11,7 @@ public class HelloFunctionTest {
 
     @Test
     public void test() {
-        Greeting result = new HelloFunction().hello().apply(new User("foo"));
+        Greeting result = new HelloFunction().hello(new TestExecutionContext("hello")).apply(new User("foo"));
         assertThat(result.getMessage()).isEqualTo("Welcome, foo");
     }
 
@@ -19,7 +19,7 @@ public class HelloFunctionTest {
     public void start() throws Exception {
         AzureSpringBootRequestHandler<User, Greeting> handler = new AzureSpringBootRequestHandler<>(
                 HelloFunction.class);
-        Greeting result = handler.handleRequest(new User("foo"), null);
+        Greeting result = handler.handleRequest(new User("foo"), new TestExecutionContext("hello"));
         handler.close();
         assertThat(result.getMessage()).isEqualTo("Welcome, foo");
     }
