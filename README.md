@@ -33,5 +33,3 @@ Deploying the application on Azure Function with the Azure Function Maven plug-i
 
 `./mvnw azure-functions:deploy`
 
-## Manually Testing the Azure Function
-curl http://localhost:7071/api/hello -d "{\"name\":\"Azure\"}"
